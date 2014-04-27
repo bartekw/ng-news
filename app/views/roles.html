@@ -1,0 +1,34 @@
+
+  <div class=" col-sm-9 col-md-9">
+    <div ng-controller="RolesCtrl" class="container-fluid roles-page" ng-switch on="mode">
+    {{ mode }}
+      <div ng-switch-when=true>
+
+        <h3>Add role:</h3>
+        <form class="navbar-form navbar-left" role="search" ng-submit="submitRole()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Role" ng-model="role.role">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+      <div ng-switch-default>
+      <button class="btn btn-primary" ng-click="addRole()">Add role</button>
+      <a href="#/roles/add"><span class="button glyphicon glyphicon-plus"></span> Add role </a>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(roleId, role) in roles">
+              <td><a ng-href="#/roles/edit/{{ roleId }}">{{ role.role }}</a></td>
+              <td><a ng-click="deleteRole(roleId)">delete</a></td>
+            </tr>
+          </tbody>
+          </table>  
+      </div>
+    </div>
+  </div>
